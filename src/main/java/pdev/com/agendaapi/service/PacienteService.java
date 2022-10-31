@@ -3,6 +3,7 @@ package pdev.com.agendaapi.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pdev.com.agendaapi.domain.entities.Paciente;
+import pdev.com.agendaapi.exception.BusinessException;
 import pdev.com.agendaapi.repository.PacienteRepository;
 
 import javax.transaction.Transactional;
@@ -16,15 +17,22 @@ public class PacienteService {
 
     private final PacienteRepository repository;
 
-    public Paciente salvar(Paciente obj){
+    public Paciente salvar(Paciente paciente) {
+        boolean existeCpf = false;
 
-        //valida CPF se já existe ou email
-        if (obj.getEmail().){
+        Optional<Paciente> optPaciente = repository.findByCpf(paciente.getCpf());
 
+        if (optPaciente.isPresent()) {
+            if (!optPaciente.get().getId().equals(paciente.getId())) {
+                existeCpf = true;
+            }
         }
 
+        if (existeCpf) {
+            throw new BusinessException("Cpf já cadastrado!");
+        }
 
-        return repository.save(obj);
+        return repository.save(paciente);
     }
     public List<Paciente> buscarTodos(){
         return repository.findAll();
