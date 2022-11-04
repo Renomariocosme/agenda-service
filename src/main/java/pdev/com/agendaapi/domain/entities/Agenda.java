@@ -22,6 +22,7 @@ public class Agenda {
     @Column(name = "data_hora")
     private LocalDateTime horario;
 
+    @Column(name = "data_criacao")
     private LocalDateTime dataCriacao;
 
     @ManyToOne

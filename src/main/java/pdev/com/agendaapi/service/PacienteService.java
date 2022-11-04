@@ -1,7 +1,9 @@
 package pdev.com.agendaapi.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import pdev.com.agendaapi.domain.entities.Paciente;
 import pdev.com.agendaapi.exception.BusinessException;
 import pdev.com.agendaapi.repository.PacienteRepository;
@@ -22,18 +24,19 @@ public class PacienteService {
 
         Optional<Paciente> optPaciente = repository.findByCpf(paciente.getCpf());
 
-        if (optPaciente.isPresent()) {
-            if (!optPaciente.get().getId().equals(paciente.getId())) {
+        if (optPaciente.isPresent()){
+            if (!optPaciente.get().getId().equals(paciente.getCpf())){
                 existeCpf = true;
             }
         }
 
-        if (existeCpf) {
-            throw new BusinessException("Cpf já cadastrado!");
+        if (existeCpf){
+            throw new BusinessException("Cpf já se encontrada cadastrado");
         }
-
         return repository.save(paciente);
+
     }
+
     public List<Paciente> buscarTodos(){
         return repository.findAll();
     }
