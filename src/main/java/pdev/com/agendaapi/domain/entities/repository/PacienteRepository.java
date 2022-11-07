@@ -1,4 +1,4 @@
-package pdev.com.agendaapi.repository;
+package pdev.com.agendaapi.domain.entities.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

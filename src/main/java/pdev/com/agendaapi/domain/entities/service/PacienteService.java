@@ -1,12 +1,10 @@
-package pdev.com.agendaapi.service;
+package pdev.com.agendaapi.domain.entities.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 import pdev.com.agendaapi.domain.entities.Paciente;
 import pdev.com.agendaapi.exception.BusinessException;
-import pdev.com.agendaapi.repository.PacienteRepository;
+import pdev.com.agendaapi.domain.entities.repository.PacienteRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

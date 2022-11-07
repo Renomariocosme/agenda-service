@@ -8,7 +8,7 @@ import pdev.com.agendaapi.domain.entities.Paciente;
 import pdev.com.agendaapi.mapper.PacienteMapper;
 import pdev.com.agendaapi.request.PacienteRequest;
 import pdev.com.agendaapi.response.PacienteResponse;
-import pdev.com.agendaapi.service.PacienteService;
+import pdev.com.agendaapi.domain.entities.service.PacienteService;
 
 import java.util.List;
 import java.util.Optional;
