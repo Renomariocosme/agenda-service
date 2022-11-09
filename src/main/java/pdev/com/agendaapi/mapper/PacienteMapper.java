@@ -20,10 +20,10 @@ public class PacienteMapper {
     public static PacienteResponse toPacienteResponse(Paciente paciente){
         PacienteResponse response = new PacienteResponse();
         response.setId(paciente.getId()) ;
-        paciente.setNome(paciente.getNome());
-        paciente.setSobrenome(paciente.getSobrenome());
-        paciente.setEmail(paciente.getEmail());
-        paciente.setCpf(paciente.getCpf());
+        response.setNome(paciente.getNome());
+        response.setSobrenome(paciente.getSobrenome());
+        response.setEmail(paciente.getEmail());
+        response.setCpf(paciente.getCpf());
         return response;
     }
      public static List<PacienteResponse> toPacienteResponseList(List<Paciente> pacientes){
