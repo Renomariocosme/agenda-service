@@ -23,7 +23,7 @@ public class PacienteService {
         Optional<Paciente> optPaciente = repository.findByCpf(paciente.getCpf());
 
         if (optPaciente.isPresent()){
-            if (!optPaciente.get().getId().equals(paciente.getCpf())){
+            if (!optPaciente.get().getId().equals(paciente.getId())){
                 existeCpf = true;
             }
         }
@@ -33,6 +33,17 @@ public class PacienteService {
         }
         return repository.save(paciente);
 
+    }
+
+    public Paciente alterar(Long id, Paciente paciente){
+        Optional<Paciente> optionalPaciente = this.buscarPorId(id);
+
+        if (optionalPaciente.isEmpty()){
+            throw new BusinessException("Paciente não encontrado no sistema");
+        }
+        paciente.setId(id);
+
+        return salvar(paciente);
     }
 
     public List<Paciente> buscarTodos(){
