@@ -10,6 +10,7 @@ import pdev.com.agendaapi.mapper.AgendaMapper;
 import pdev.com.agendaapi.request.AgendaRequest;
 import pdev.com.agendaapi.response.AgendaResponse;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,7 @@ public class AgendaController {
     }
 
     @PostMapping
-    public ResponseEntity<AgendaResponse> salvar(@RequestBody AgendaRequest request){
+    public ResponseEntity<AgendaResponse> salvar(@Valid @RequestBody AgendaRequest request){
         Agenda agenda = mapper.toAgenda(request);
         Agenda agendaSalva = service.salvar(agenda);
         AgendaResponse agendaResponse = mapper.toAgendaResponse(agendaSalva);
