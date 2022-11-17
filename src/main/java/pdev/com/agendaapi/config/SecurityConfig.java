@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // autenticacao
         http.addFilter(new CustomAuthenticationFilterConfig(authenticationManager()));
+
         // autorização
         // authenticationManager
     }
