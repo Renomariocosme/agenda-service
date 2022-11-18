@@ -38,7 +38,6 @@ public class CustomAuthenticationFilterConfig extends UsernamePasswordAuthentica
         return authenticationManager.authenticate(authenticationToken);
 
 
-      //  return super.attemptAuthentication(request, response);
     }
 
     @Override

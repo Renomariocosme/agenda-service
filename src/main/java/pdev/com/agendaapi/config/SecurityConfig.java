@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     @Override
-    protected AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().authenticated();
 
         // autenticacao
-        http.addFilter(new CustomAuthenticationFilterConfig(authenticationManager()));
+        http.addFilter(new CustomAuthenticationFilterConfig(authenticationManagerBean()));
 
         // autorização
         // authenticationManager
